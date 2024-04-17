@@ -5,81 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/bootstrap.css" />
-    <script defer src="/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <link rel="stylesheet" href="./style.css" />
     <title><%=title%></title>
+    <style>
+      body {
+        margin-top: 95px;
+        background-color: #009393;
+      }
+      .form-login , h1 {
+    text-align: center; /* Центрируем текст внутри элементов с классом "col-lg-4" */
+    font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 400;
+color: white;
+}
+
+p {
+   max-width: 1300px;
+    text-align: left;
+    font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 400;
+color: white;
+}
+
+.text {
+    display: flex;
+        justify-content: center;
+}
+.gerb, .karta {
+        display: flex;
+        justify-content: center;
+    }
+
+    h1 {
+        text-align: center; /* Центрируем текст внутри элементов с классом "col-lg-4" */
+    font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 700;
+color: white;
+    }
+    h4 {
+        text-align: center; /* Центрируем текст внутри элементов с классом "col-lg-4" */
+    font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 700;
+color: white;
+font-size: 32px;
+    }
+    .fw-normal {
+      font-size: 55px;
+    }
+    label {
+      color: gray;
+    }
+    input {
+      border: 5px solid #4EC3BD;
+    }
+
+
+    </style>
   </head>
   <body>
-    <header><%- include('./partials/header'); %></header>
-    <section class="login-content">
-      <div class="container-fluid">
-        <h1 class="text-center">Авторизация</h1>
-        <%- include('./partials/messages') %>
-        <form class="container needs-validation" action="/login" method="post" novalidate="">
-          <div class="row g-2 g-5">
-            <div class="col-12">
-              <div class="form-floating mb-3">
-                <input
-                  type="email"
-                  class="form-control"
-                  id="email"
-                  name="loginForm[email]"
-                  placeholder="name@email.com"
-                  required=""
-                />
-                <label for="validationCustom01">Email</label>
-                <div class="invalid-feedback">
-                  Пожалуйста, введите ваш email.
-                </div>
-              </div>
-            </div>
+
+
+
+    <main class="form-login m-auto" style="width: 30%; padding: 20px">
+      <form action="/login" method="post" id="myForm" novalidate>
+        <img src="/img/image 10.png" alt="">
+        <h1
+          class="fw-normal"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          ВХОД
+        </h1>
+
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="validationCustom01"
+            placeholder="name@email.com"
+            name="loginForm[email]"
+            required=""
+          />
+          <label for="floatingInput">Логин</label>
+        </div>
+        <br />
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control pas"
+            id="validationCustomPas"
+            placeholder="Введите пароль"
+            name="loginForm[password]"
+            required=""
+          />
+          <label for="floatingPassword">Пароль</label>
+        </div>
+        <br />
+        <div style="text-align: center" id="message"></div>
+        <br />
+        <div
+          class="row g-2 g-5"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="col-12 col-sm-6">
+            У вас нет аккаунта?
+            <a href="register" class="text-decoration-none">Регистрация</a>
           </div>
-  
-          <div class="row g-2 g-5">
-            <div class="col-12">
-              <div class="form-floating mb-3">
-                <input
-                  type="password"
-                  class="form-control pas"
-                  id="password"
-                  name="loginForm[password]"
-                  placeholder="Введите пароль"
-                  required=""
-                />
-                <label for="validationCustomPas">Введите пароль</label>
-                <div class="invalid-feedback">
-                  Пожалуйста, введите ваш пароль.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-12 col-sm-4 align-items-center">
-              <button type="submit" class="btn btn-info  ">Войти</button>
-            </div>
-            <div class="col-12 col-sm-3 align-items-center">
-              <a href="/auth/yandex" class="btn btn-info links"><img src="/img/Yandex.png"/>Войти через Яндекс</a>
-            </div>
-            <div class="col-12 col-sm-3 align-items-center">
-              <a href="/auth/google" class="btn btn-info links"><img src="/img/Google.png"/>Войти через Google</a>
-            </div>
-            <div class="col-12 col-sm-3 align-items-center">
-              <a href="/auth/vkontakte" class="btn btn-info links"><img src="/img/VK.png"/>Войти через VK</a>
-            </div>
-            <div class="col-12 col-sm-3 align-items-center">
-              <a href="/auth/github" class="btn btn-info links"><img src="/img/github.png"/>Войти через GitHub</a>
-            </div>
-            
-          </div>
-          <div class="row g-2 g-5">
-            <div class="col-12 col-sm-6">
-              <a href="register" class="text-decoration-none">У вас нет аккаунта? Регистрация</a>
-            </div>
-          </div>
-        </form>
-      </section>
-    <footer><%- include('./partials/footer')%></footer>
-      </body>
+        </div>
+        <br />
+        <button
+          class="btn btn-primary w-100 py-2"
+          type="submit"
+          style="background-color: #4EC3BD; border: 2px #4EC3BD solid"
+        >
+          Вход
+        </button>
+      </form>
+    </main>
+  </body>
 </html>

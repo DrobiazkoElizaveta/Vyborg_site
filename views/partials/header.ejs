@@ -1,52 +1,75 @@
-<nav class="navbar navbar-expand-sm bg-dark text-light">
-  <div class="container">
-    <div class="nav__brand">
-      <a class="navbar-brand" href="/">News</a>
-      <button
-        class="navbar-toggler d-lg-none"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#collapsibleNavId"
-        aria-controls="collapsibleNavId"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
+<!-- <nav class="navbar" style="background-color: #ffa5dd;">
+  <div class="container-fluid">
+    <a class="nav-link active" href="/" aria-current="page"
+      ><img src="./img/logotip.png" alt=""><span class="visually-hidden">(current)</span></a
       >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-    <% if (locals.user) { %>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+      <a class="nav-link active" href="/entries" style="color: #0000008c;">Посты</a>
+      <% if (locals.user) { %>
+      <form class="d-flex" role="search">
+        <div id="menu">
+          <%# меню пользователей выполнивших вход%>
+          <span class="name" style="color: rgb(0, 0, 0);"><%= locals.user.name %></span> <%# user.name для
+          браузера то что пользователь послал в requeste%>
+          <a
+          type="button"
+          class="btn btn-primary me-2"
+            href="/post"
+            aria-current="page"
+            style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;"
+            >Новый пост</a>
+          <a type="button" class="btn btn-primary" href="/logout" style="background-color: #9b005f; border: 2px #9b005f solid;">Выход</a>
+          <% } else { %>
+            <div class="" id="menu">
+              <%# //меню анонимных пользователей %>
+              <a
+              type="button"
+              href="/login"
+              class="btn btn-primary me-2"
+              style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;"
+              >
+              Вход
+            </a>
+            <a type="button" href="/register" class="btn btn-primary" style="background-color: #9b005f; border: 2px #9b005f solid;">
+              Регистрация
+            </a>
+            <% } %>
+          </div>
+          </form>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #4EC3BD; font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 700;
+font-style: normal;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="./img/logo.png" alt="logo" width="50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item">
-          <a class="nav-link header-link" href="/" aria-current="page"
-            >Главная<span class="visually-hidden">(current)</span></a
-          >
+          <a class="nav-link active" aria-current="page" href="/about">О городе</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link header-link" href="/posts">Записи</a>
+          <a class="nav-link active" aria-current="page" href="">Маршруты</a>
         </li>
         <li class="nav-item">
-          <a href="/logout" class="nav-link header-link">Выйти</a>
+          <a class="nav-link active" aria-current="page" href="/map">Карта с достопримечательностями</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Новости</a>
         </li>
       </ul>
-      <p class="user-name"><%= locals.user.name %></p>
+      <form class="d-flex" role="search">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="./img/user.png" alt="">
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="navbarDarkDropdownMenuLink">
+          <li><a class="dropdown-item" href="/login">Вход</a></li>
+          <li><a class="dropdown-item" href="/register">Регистрация</a></li>
+        </ul>
+      </form>
     </div>
-    <% } else { %>
-    <div class="collapse navbar-collapse" id="collapsibleNavId">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-        <li class="nav-item">
-          <a class="nav-link header-link" href="/" aria-current="page"
-            >Главная<span class="visually-hidden">(current)</span></a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link header-link" href="/login">Войти</a>
-        </li>
-        <li class="nav-item">
-          <a href="/register" class="nav-link header-link">Регистрация</a>
-        </li>
-      </ul>
-    </div>
-    <% } %>
   </div>
 </nav>

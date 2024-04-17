@@ -1,19 +1,16 @@
 const Entry = require("../models/entry");
-const logger = require("../logger/index");
 
 exports.list = (req, res, next) => {
   Entry.selectAll((err, entries) => {
     if (err) return next(err);
 
     const userData = req.user;
-    logger.info("Пользователь зашёл на страницу постов");
     res.render("entries", { title: "Посты", entries: entries, user: userData });
   });
 };
 
 exports.form = (req, res) => {
-  logger.info("Пользователь зашёл на страницу создания поста");
-  res.render("post", { title: "Создание поста" });
+  res.render("post", { title: "Создать пост" });
 };
 
 exports.submit = (req, res, next) => {
@@ -28,40 +25,34 @@ exports.submit = (req, res, next) => {
     };
 
     Entry.create(entry);
-    logger.info("Пользователь создал новый пост");
-    res.redirect("/posts");
+    res.redirect("/entries");
   } catch (err) {
-    logger.error(`Произошла ошибка: ${err}`);
     return next(err);
   }
 };
 
-exports.delete = async (req, res, next) => {
+exports.delete = (req, res, next) => {
   const entryId = req.params.id;
 
-  Entry.delete(entryId, async (err) => {
+  Entry.delete(entryId, (err) => {
     if (err) {
-      logger.error(`Произошла ошибка: ${err}`);
       return next(err);
     }
-    logger.info("Пользователь удалил пост");
-    await res.redirect("/posts");
+    res.redirect("/entries");
   });
 };
 
 exports.updateForm = (req, res) => {
   const entryId = req.params.id;
-  Entry.getEntryById(entryId, async (err, entry) => {
+  Entry.getEntryById(entryId, (err, entry) => {
     if (err) {
-      logger.error(`Произошла ошибка: ${err}`);
-      return res.redirect("posts");
+      return res.redirect("/entries");
     }
-    logger.info("Пользователь зашёл на страницу обновления поста");
-    await res.render("update", { title: "Изменение поста", entry: entry });
+    res.render("update", { title: "Изменить пост", entry: entry });
   });
 };
 
-exports.updateSubmit = async (req, res, next) => {
+exports.updateSubmit = (req, res, next) => {
   const entryId = req.params.id;
   const newData = {
     title: req.body.entry.title,
@@ -70,10 +61,8 @@ exports.updateSubmit = async (req, res, next) => {
 
   Entry.update(entryId, newData, (err) => {
     if (err) {
-      logger.error(`Произошла ошибка: ${err}`);
       return next(err);
     }
+    res.redirect("/entries");
   });
-  logger.info("Пользователь изменил пост");
-  await res.redirect("/posts");
 };
