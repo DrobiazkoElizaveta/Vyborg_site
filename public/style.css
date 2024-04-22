@@ -1,13 +1,12 @@
 * {
   font-family: sans-serif;
 }
-
-.klass {
-  background-color: aqua;
-  border: 1px solid black;
+.header-link,
+.navbar-brand {
+  color: white;
 }
 
-img {
-  width: 450px;
-  height: 300px;
+.links img {
+  max-width: 30px;
+  max-height: 30px;
 }

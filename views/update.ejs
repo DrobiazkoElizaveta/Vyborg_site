@@ -6,15 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/bootstrap.css" />
+    <script defer src="/js/bootstrap.js"></script>
+    <style>
+      .header-link,
+      .navbar-brand {
+        color: white;
+      }
+    </style>
   </head>
   <body>
     <header><%- include ('./partials/header') %></header>
-    <div class="container">
-      <h1>Измени свой пост</h1>
+    <div class="container mt-3 mb-3">
+      <h1><%= title %></h1>
       <%#- include ('./partials/messages') %>
-      <form method="post" action="/update/<%= entry.id %>?_method=PUT"">
+      <p>Заполните форму ниже чтобы изменить пост.</p>
+      <form method="post" action="/update/<%= entry.id %>">
         <div class="mb-3">
-          <label for="z" class="form-label">Заголовок</label>
+          <label for="z" class="form-label">Заголовок поста</label>
           <input
             type="text"
             class="form-control"
@@ -22,25 +30,17 @@
             id="z"
             aria-describedby="helpId"
             value="<%= entry.title %>"
+            placeholder="Заголовок поста"
           />
         </div>
         <div class="mb-3">
-          <label for="s" class="form-label">Текст</label>
+          <label for="s" class="form-label">Текст заметки</label>
           <textarea class="form-control" name="entry[content]" id="s" rows="3">
 <%= entry.content %></textarea
           >
         </div>
-        <button
-          type="submit"
-          value="Post"
-          class="btn btn-primary"
-          style="
-            border: 2px #c9007c solid;
-            color: #ffffff;
-            background-color: #c9007c;
-          "
-        >
-          Изменить
+        <button type="submit" value="Post" class="btn btn-primary">
+          Отправить
         </button>
       </form>
     </div>

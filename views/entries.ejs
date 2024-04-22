@@ -7,38 +7,41 @@
     <title><%= title %> </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="./style.css" />
+
+    <script defer src="/js/bootstrap.js"></script>
+
 </head>
 <body>
     <header><%- include ('./partials/header') %></header>
-    <div class="container" style="margin-top: 20px;">
+    <div class="container mt-3 mb-3">
     <%#- include ('./partials/messages') %>
     <% entries.forEach((entry)=>{ %>
-        <div class="card entry" style="width: 66rem; padding: 10px;">
+        <div class="card entry" style="width: 66rem;">
             <div class="card-body ">
                 <h5 class="card-title"><%= entry.title %></h5>
                 <p class="card-text">
                     <%= entry.content %> 
                 </p>
                 </br>
-                <h6>Автор:   <%= entry.username %> </h6> 
-                <p class="card-text"><small class="text-body-secondary"><%= entry.created_at %></small></p>               
-                <% if (locals.user) { %>
-                    <% if (locals.admin || entry.username === locals.user.name) { %>
-                      <a type="button" href="/update/<%= entry.id %>" class="btn btn-primary me-2 btn-update" style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;">
-                        Изменить
-                      </a>
-                      <% if (locals.admin || entry.username === locals.user.name) { %>
-                        <a type="button" href="/delete/<%= entry.id %>" class="btn btn-primary me-2 btn-delete" style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;">
-                          Удалить
-                        </a>
-                      <% } %>
-                    <% } %>
-                  <% } %>
-                
+                <h6>Запостил :   <%= entry.username %> </h6>      
+                      
+                <%if(locals.user){%>
+                    <% if (locals.admin || entry.username == locals.user.name) { %> 
+                    <a href="/update/<%= entry.id %>" class="btn-update">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                    <a href="/delete/<%= entry.id %>" class="btn-delete">
+                        <i class="fas fa-trash-alt" ></i>
+                    </a>
+                    <%}%>
+                <%}%>
+              
             </div>
         </div> 
         </br>
     <% }) %> 
+    <a href="/post">Создать новый пост</a>
     </div>
     <footer><%- include ('./partials/footer') %></footer>
 </body>
