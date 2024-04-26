@@ -5,7 +5,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 exports.form = (req, res) => {
-  res.render("registerForm", { title: "Register" });
+  res.render("registerForm", { title: "Регистрация" });
 };
 
 exports.submit = async (req, res, next) => {

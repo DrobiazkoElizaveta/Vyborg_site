@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 exports.form = (req, res) => {
-  res.render("loginForm", { title: "Login", messanger: messanger });
+  res.render("loginForm", { title: "Вход", messanger: messanger });
 };
 
 // async function authentificate(dataForm, cb) {
