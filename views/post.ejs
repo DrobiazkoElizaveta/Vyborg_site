@@ -6,30 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
     <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="./style.css" />
-
-    <script defer src="/js/bootstrap.js"></script>
   </head>
   <body>
     <header><%- include ('./partials/header') %></header>
-    <div class="container mt-3 mb-3">
-      <h1><%= title %></h1>
-      <%- include ('./partials/messages') %>
-      <p>Заполните форму ниже чтобы добавить новый пост</p>
-      <form action="/post" method="post">
+    <div class="container">
+      <h1>Напишите свой пост</h1>
+      <%#- include ('./partials/messages') %>
+      <form action="/post" method="post" id="post">
+        <div id="message_post"></div>
         <div class="mb-3">
-          <label for="z" class="form-label">Заголовок поста</label>
+          <label for="z" class="form-label">Заголовок</label>
           <input
             type="text"
             class="form-control"
             name="entry[title]"
             id="z"
             aria-describedby="helpId"
-            placeholder="Заголовок поста"
           />
         </div>
         <div class="mb-3">
-          <label for="s" class="form-label">Текст заметки</label>
+          <label for="s" class="form-label">Текст</label>
           <textarea
             class="form-control"
             name="entry[content]"
@@ -37,11 +33,21 @@
             rows="3"
           ></textarea>
         </div>
-        <button type="submit" value="Post" class="btn btn-primary">
-          Отправить
+        <button
+          type="submit"
+          value="Post"
+          class="btn btn-primary"
+          style="
+            border: 2px #c9007c solid;
+            color: #ffffff;
+            background-color: #c9007c;
+          "
+        >
+          Запостить
         </button>
       </form>
     </div>
+    <script src="./js/validation_post.js"></script>
     <footer><%- include ('./partials/footer') %></footer>
   </body>
 </html>

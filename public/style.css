@@ -1,12 +1,13 @@
 * {
   font-family: sans-serif;
 }
-.header-link,
-.navbar-brand {
-  color: white;
+
+.klass {
+  background-color: aqua;
+  border: 1px solid black;
 }
 
-.links img {
-  max-width: 30px;
-  max-height: 30px;
+img {
+  width: 450px;
+  height: 300px;
 }

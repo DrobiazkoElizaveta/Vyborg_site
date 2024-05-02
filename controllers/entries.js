@@ -1,17 +1,19 @@
-const { Entry } = require("../models/db");
-const logger = require("../logger/index");
+const Entry = require("../models/entry");
 
-exports.list = async (req, res, next) => {
-  const entries = await Entry.findAll();
-  const userData = req.user;
-  res.render("entries", { title: "Посты", entries: entries, user: userData });
+exports.list = (req, res, next) => {
+  Entry.selectAll((err, entries) => {
+    if (err) return next(err);
+
+    const userData = req.user;
+    res.render("entries", { title: "Посты", entries: entries, user: userData });
+  });
 };
 
 exports.form = (req, res) => {
-  res.render("post", { title: "Создание поста" });
+  res.render("post", { title: "Создать пост" });
 };
 
-exports.submit = async (req, res, next) => {
+exports.submit = (req, res, next) => {
   try {
     const username = req.user ? req.user.name : null;
     const data = req.body.entry;
@@ -22,58 +24,45 @@ exports.submit = async (req, res, next) => {
       content: data.content,
     };
 
-    await Entry.create(entry);
-    logger.info("Пользователь создал новый пост");
-    res.redirect("/posts");
+    Entry.create(entry);
+    res.redirect("/entries");
   } catch (err) {
-    logger.error(`Произошла ошибка: ${err}`);
     return next(err);
   }
 };
 
-exports.delete = async (req, res, next) => {
-  try {
-    const entryId = req.params.id;
-    await Entry.destroy({
-      where: {
-        id: entryId,
-      },
-    });
-    logger.info("Пользователь удалил пост");
-    await res.redirect("/posts");
-  } catch (error) {
-    logger.error(`Произошла ошибка: ${err}`);
-    return next(err);
-  }
+exports.delete = (req, res, next) => {
+  const entryId = req.params.id;
+
+  Entry.delete(entryId, (err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/entries");
+  });
 };
 
-exports.updateForm = async (req, res) => {
-  try {
-    const entryId = req.params.id;
-    const entry = await Entry.findOne({ where: { id: entryId } });
-    await res.render("update", { title: "Изменение поста", entry: entry });
-  } catch (error) {
-    logger.error(`Произошла ошибка: ${error}`);
-    return next(error);
-  }
+exports.updateForm = (req, res) => {
+  const entryId = req.params.id;
+  Entry.getEntryById(entryId, (err, entry) => {
+    if (err) {
+      return res.redirect("/entries");
+    }
+    res.render("update", { title: "Изменить пост", entry: entry });
+  });
 };
 
-exports.updateSubmit = async (req, res, next) => {
-  try {
-    const entryId = req.params.id;
-    const newData = {
-      title: req.body.entry.title,
-      content: req.body.entry.content,
-    };
-    await Entry.update(newData, {
-      where: {
-        id: entryId,
-      },
-    });
-    logger.info("Пользователь изменил пост");
-    await res.redirect("/posts");
-  } catch (error) {
-    logger.error(`Произошла ошибка: ${error}`);
-    return next(error);
-  }
+exports.updateSubmit = (req, res, next) => {
+  const entryId = req.params.id;
+  const newData = {
+    title: req.body.entry.title,
+    content: req.body.entry.content,
+  };
+
+  Entry.update(entryId, newData, (err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/entries");
+  });
 };

@@ -1,27 +1,43 @@
-module.exports = (req, res, next) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) {
-    return res.status(400).json({ error: `Все поля должны быть заполнены` });
-  }
+const register = require("../controllers/register");
 
-  if (!isValidPassword(password)) {
-    res.status(400).json({
-      error: `Ваш пароль должен быть не менее 8 символов, содержать хотя бы одну цифру, одну заглавную и одну строчную букву`,
-    });
-    return res.redirect(`/login`);
+module.exports = (req, res, next) => {
+  const { name, email, password, age } = req.body;
+  if (!name || !email || !password || !age) {
+    res.status(400).send(`
+    <div style="text-align:center">
+      <h2>Заполните все поля!</h2>
+      <a href="javascript:history.back()">Назад</a>
+      </div>
+    `);
+    return;
+  }
+  if (!validatePassword(password)) {
+    res.status(400).send(`
+    <div style="text-align:center">
+      <h2>Пароль должен содержать только латинские буквы и цифры, и быть не менее 6 символов длиной!</h2>
+      <a href="javascript:history.back()">Назад</a>
+      </div>
+    `);
+    return;
   }
   if (!validateEmail(email)) {
-    res.status(400).json({ error: "Введите правильную почту" });
-    return res.redirect(`/login`);
+    res.status(400).send(`
+    <div style="text-align:center">
+      <h2>Некорректный адрес электронной почты!</h2>
+      <a href="javascript:history.back()">Назад</a>
+      </div>
+    `);
+    return;
   }
   next();
 };
 
 function validateEmail(email) {
-  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  const emailPattern = /^\S+@\S+\.\S+$/;
   return emailPattern.test(email);
 }
-function isValidPassword(pass) {
-  const passPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+function validatePassword(pass) {
+  const passPattern = /^[a-zA-Z0-9]{6,}$/;
   return passPattern.test(pass);
 }
