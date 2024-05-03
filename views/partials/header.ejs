@@ -1,44 +1,36 @@
-<!-- <nav class="navbar" style="background-color: #ffa5dd;">
-  <div class="container-fluid">
-    <a class="nav-link active" href="/" aria-current="page"
-      ><img src="./img/logotip.png" alt=""><span class="visually-hidden">(current)</span></a
-      >
-      <a class="nav-link active" href="/entries" style="color: #0000008c;">Посты</a>
-      <% if (locals.user) { %>
-      <form class="d-flex" role="search">
-        <div id="menu">
-          <%# меню пользователей выполнивших вход%>
-          <span class="name" style="color: rgb(0, 0, 0);"><%= locals.user.name %></span> <%# user.name для
-          браузера то что пользователь послал в requeste%>
-          <a
-          type="button"
-          class="btn btn-primary me-2"
-            href="/post"
-            aria-current="page"
-            style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;"
-            >Новый пост</a>
-          <a type="button" class="btn btn-primary" href="/logout" style="background-color: #9b005f; border: 2px #9b005f solid;">Выход</a>
-          <% } else { %>
-            <div class="" id="menu">
-              <%# //меню анонимных пользователей %>
-              <a
-              type="button"
-              href="/login"
-              class="btn btn-primary me-2"
-              style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;"
-              >
-              Вход
-            </a>
-            <a type="button" href="/register" class="btn btn-primary" style="background-color: #9b005f; border: 2px #9b005f solid;">
-              Регистрация
-            </a>
-            <% } %>
-          </div>
-          </form>
-  </div>
-</nav> -->
 
+<% if (locals.user) { %>
 <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #4EC3BD; font-family: Playfair Display, serif;font-optical-sizing: auto;
+font-weight: 700;
+font-style: normal;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="./img/logo.png" alt="logo" width="50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/map">Карта с достопримечательностями</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/entries">Новости</a>
+        </li>
+      </ul>
+      <a
+      type="button"
+      class="btn btn-primary me-2"
+        href="/post_entry"
+        aria-current="page"
+        style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;"
+        >Новый пост</a>
+      <a type="button" class="btn btn-primary" href="/logout" style="background-color: #9b005f; border: 2px #9b005f solid;">Выход</a>
+    </div>
+    <span class="name" style="color: rgb(255, 255, 255);"><%= locals.user.login %></span>
+  </div>
+</nav>
+<% } else { %>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #4EC3BD; font-family: Playfair Display, serif;font-optical-sizing: auto;
 font-weight: 700;
 font-style: normal;">
   <div class="container-fluid">
@@ -58,3 +50,4 @@ font-style: normal;">
     </div>
   </div>
 </nav>
+<% } %>

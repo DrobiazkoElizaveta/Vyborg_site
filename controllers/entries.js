@@ -10,16 +10,14 @@ exports.list = (req, res, next) => {
 };
 
 exports.form = (req, res) => {
-  res.render("post", { title: "Создать пост" });
+  res.render("post_entry", { title: "Создать пост" });
 };
 
 exports.submit = (req, res, next) => {
   try {
-    const username = req.user ? req.user.name : null;
     const data = req.body.entry;
 
     const entry = {
-      username: username,
       title: data.title,
       content: data.content,
     };
@@ -48,7 +46,7 @@ exports.updateForm = (req, res) => {
     if (err) {
       return res.redirect("/entries");
     }
-    res.render("update", { title: "Изменить пост", entry: entry });
+    res.render("update_entry", { title: "Изменить пост", entry: entry });
   });
 };
 

@@ -67,6 +67,7 @@ color: white;
     </div>
 
     <div class="karta" id="map"></div>
+
     </main>
 
     <footer><%- include(`./partials/footer`) %></footer>
@@ -77,6 +78,30 @@ color: white;
       crossorigin="anonymous"
     ></script>
     <script src="https://api-maps.yandex.ru/2.1/?apikey=9e0e7d1a-d514-4745-b63c-7d8ab0723fff&lang=ru_RU" type="text/javascript"></script>
-    <script src="./js/map.js"></script>
   </body>
+    <script>
+      ymaps.ready(init);
+
+      function init() {
+        var myMap = new ymaps.Map("map", {
+        center: [60.710497, 28.749784], // Координаты города Выборг
+        zoom: 17
+        });
+
+        <% landmarks.forEach((landmark) => { %>
+        var placemark = new ymaps.Placemark([<%= landmark.latitude %>, <%= landmark.longitude %>], {
+        balloonContentHeader: '<strong><%= landmark.title %></strong>',
+        balloonContentBody: '<img src="<%= landmark.description_image %>" style="width: 150px;"><p style="color: black; text-align: justify;"><%= landmark.description %></p>',
+        iconContent: '<img src="<%= landmark.main_image %>" style="width: 70px;">'
+    }, {
+        iconLayout: 'default#imageWithContent',
+        iconImageHref: 'your_image_url.jpg',
+        iconImageSize: [100, 100],
+        iconImageOffset: [-25, -25]
+    });
+    myMap.geoObjects.add(placemark);
+<% }) %>
+
+    }
+  </script>
 </html>

@@ -1,19 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const register = require("../controllers/register");
+// const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
+const landmarks = require("../controllers/landmarks");
 const validation = require("../middleware/validate_form");
 
 router.get("/", (req, res) => {
   res.render("home", {
     title: "Главная",
-  });
-});
-
-router.get("/map", (req, res) => {
-  res.render("map", {
-    title: "Карта с достопримечательностями",
   });
 });
 
@@ -27,8 +22,16 @@ router.post("/update/:id", entries.updateSubmit);
 
 router.get("/delete/:id", entries.delete);
 
-router.get("/register", register.form);
-router.post("/register", validation, register.submit);
+router.get("/map", landmarks.list);
+
+router.get("/post", landmarks.form);
+router.post("/post", landmarks.submit);
+
+router.get("/update/:id", landmarks.updateForm);
+router.post("/update/:id", landmarks.updateSubmit);
+
+router.get("/delete/:id", landmarks.delete);
+
 
 router.get("/login", login.form);
 router.post("/login", login.submit);
