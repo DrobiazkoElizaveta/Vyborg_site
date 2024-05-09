@@ -1,66 +1,68 @@
-const Entry = require("../models/entry");
+const { Entry } = require("../models/models");
 
-exports.list = (req, res, next) => {
-  Entry.selectAll((err, entries) => {
-    if (err) return next(err);
-
-    const userData = req.user;
-    res.render("entries", { title: "Посты", entries: entries, user: userData });
-  });
+exports.list = async (req, res, next) => {
+  const entries = await Entry.findAll();
+  const userData = req.user;
+  res.render("entries", { title: "Новости", entries: entries, user: userData });
 };
 
 exports.form = (req, res) => {
-  res.render("post_entry", { title: "Создать пост" });
+  res.render("post_entry", { title: "Создать новость" });
 };
 
-exports.submit = (req, res, next) => {
+exports.submit = async (req, res, next) => {
   try {
     const data = req.body.entry;
 
     const entry = {
       title: data.title,
       content: data.content,
+      photo: req.body.entry.photo,
     };
 
-    Entry.create(entry);
+    await Entry.create(entry);
     res.redirect("/entries");
   } catch (err) {
     return next(err);
   }
 };
 
-exports.delete = (req, res, next) => {
-  const entryId = req.params.id;
+exports.delete = async (req, res, next) => {
+  try {
+    const entryId = req.params.id;
 
-  Entry.delete(entryId, (err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/entries");
-  });
+    Entry.destroy({ where: { id: entryId } });
+    await res.redirect("/entries");
+  } catch (error) {
+    return next(error);
+  }
 };
 
-exports.updateForm = (req, res) => {
-  const entryId = req.params.id;
-  Entry.getEntryById(entryId, (err, entry) => {
-    if (err) {
-      return res.redirect("/entries");
-    }
-    res.render("update_entry", { title: "Изменить пост", entry: entry });
-  });
+exports.updateForm = async (req, res) => {
+  try {
+    const entryId = req.params.id;
+    const entry = await Entry.findOne({ where: { id: entryId } });
+    await res.render("update_entry", { title: "Изменить новость", entry: entry });
+  } catch (error) {
+    return next(error);
+  }
 };
 
-exports.updateSubmit = (req, res, next) => {
-  const entryId = req.params.id;
-  const newData = {
-    title: req.body.entry.title,
-    content: req.body.entry.content,
-  };
-
-  Entry.update(entryId, newData, (err) => {
-    if (err) {
-      return next(err);
-    }
-    res.redirect("/entries");
-  });
+exports.updateSubmit = async (req, res, next) => {
+  try {
+    const entryId = req.params.id;
+    const newData = {
+      title: req.body.entry.title,
+      content: req.body.entry.content,
+      photo: req.body.entry.photo,
+    };
+    await Entry.update(newData, {
+      where: {
+        id: entryId,
+      },
+    });
+    await res.redirect("/entries");
+  } catch (error) {
+    return next(error);
+  }
 };

@@ -8,9 +8,13 @@ const userSession = require("./middleware/user_session");
 const app = express();
 const myRoutes = require("./routers/index_routers");
 const port = "3000";
+const sequelize = require("./db");
+const fileUpload = require("express-fileupload");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.resolve(__dirname, "static")));
+app.use(fileUpload({}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -36,15 +40,25 @@ app.use(
   )
 );
 
-
 app.use(favicon(__dirname + "/public/favicon.png"));
 
 app.use(userSession);
 app.use(myRoutes);
 
-app.listen(port, () => {
-  console.log(`listen on port ${port}`);
-});
+
+
+const start = async () => {
+  try {
+    await sequelize.authenticate();
+    await sequelize.sync();
+    app.listen(port, () => {
+      console.log(`listen on port ${port}`);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+start();
 
 app.get("env") == "production";
 if (app.get("env") == "production") {
@@ -55,11 +69,12 @@ if (app.get("env") == "production") {
 }
 //ERROR HANDLER
 app.use((error, req, res, next) => {
-  res.status(error.statusCode || 500).render('error', { title: 'Ошибка', message: error.message });
+  res
+    .status(error.statusCode || 500)
+    .render("error", { title: "Ошибка", message: error.message });
 });
 app.use((req, res, next) => {
-  const error = new Error('Страница не найдена');
+  const error = new Error("Страница не найдена");
   error.statusCode = 404;
   next(error);
 });
-

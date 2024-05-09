@@ -14,24 +14,18 @@ router.get("/", (req, res) => {
 
 router.get("/entries", entries.list);
 
-router.get("/post", entries.form);
+router.get("/post_entry", entries.form);
 router.post("/post", entries.submit);
 
-router.get("/update/:id", entries.updateForm);
+router.get("/update_entry/:id", entries.updateForm);
 router.post("/update/:id", entries.updateSubmit);
 
 router.get("/delete/:id", entries.delete);
 
 router.get("/map", landmarks.list);
 
-router.get("/post", landmarks.form);
-router.post("/post", landmarks.submit);
-
-router.get("/update/:id", landmarks.updateForm);
-router.post("/update/:id", landmarks.updateSubmit);
-
-router.get("/delete/:id", landmarks.delete);
-
+router.get("/post_map", landmarks.form);
+router.post("/post_map", landmarks.submit);
 
 router.get("/login", login.form);
 router.post("/login", login.submit);
