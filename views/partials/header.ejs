@@ -1,38 +1,24 @@
 <% if (locals.user) { %>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #657F4B;">
-    <div class="container-fluid">
-      <a class="navbar-brand"><img src="./img/logo.png" alt="" width="65px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Главная</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/map" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Интерактивная карта</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/entries" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Новости</a>
-          </li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand"><img src="./img/logo.png" alt="" width="50px"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/map">Интерактивная карта</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/entries">Новости</a>
+        </li>
       </ul>
-      
-      </div>
       <div>
-      <!-- <a
-        type="button"
-        class="btn btn-primary me-2"
-        href="/post_entry"
-        aria-current="page"
-        style="
-          border: 2px #355E3B solid;
-          color: #ffffff;
-          background-color: #355E3B;
-        "
-        >Новый пост</a
-        > -->
-        <span class="name" style="color: rgb(255, 255, 255)"
+        <span class="name" style="color: rgb(0, 0, 0)"
           ><%= locals.user.email %></span
         >
       <a
@@ -43,28 +29,28 @@
         >Выход</a
       >
     </div>
+    </div>
   </div>
 </nav>
 <% } else { %>
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top" style="background-color: #657F4B;">
-    <div class="container-fluid">
-      <a class="navbar-brand"><img src="./img/logo.png" alt="" width="65px"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand"><img src="./img/logo.png" alt="" width="50px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Главная</a>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Главная</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/map" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Интерактивная карта</a>
+            <a class="nav-link" href="/map">Интерактивная карта</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/entries" style="color: #181513; font-family: 'Arial', sans-serif; font-size: 17px;">Новости</a>
+            <a class="nav-link" href="/entries">Новости</a>
           </li>
-      </ul>
-      
+        </ul>
       </div>
     </div>
   </nav>

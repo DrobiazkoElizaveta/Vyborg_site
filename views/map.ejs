@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -32,7 +35,7 @@
     <main>
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
-          <div class="col-lg-6 col-md-8 mx-auto">
+          <div class="col-lg-12 col-md-8 mx-auto">
             <h1 class="fw-light">Откройте для себя красоты Выборга на карте достопримечательностей</h1>
             <p class="lead text-body-secondary">Прогулка по Выборгу обязательно должна включать в себя посещение множества удивительных достопримечательностей – от старинных замков и церквей до живописных парков и уютных набережных. На карте вы сможете легко найти все основные места, которые стоит посетить в этом удивительном городе.</p>
             <% if (locals.user) { %>
@@ -62,7 +65,7 @@
       function init() {
         var myMap = new ymaps.Map("map", {
         center: [60.710497, 28.749784],
-        zoom: 17
+        zoom: 15
         });
 
         <% landmarks.forEach(function(landmark) { %>

@@ -206,3 +206,18 @@ body {
     margin-top: 7rem;
   }
 }
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+#carouselExampleCaptions {
+  width: 50%; /* Уменьшаем ширину слайдера */
+  margin: 0 auto; /* Центрируем слайдер по горизонтали */
+}
+
+.carousel-item img {
+  float: left; /* Обтекание изображения */
+  margin-right: 10px; /* Добавляем небольшой отступ между изображениями */
+}
