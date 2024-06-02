@@ -11,7 +11,7 @@ const Entry = sequelize.define("entries", {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   title: { type: DataTypes.STRING, allowNull: false },
   content: { type: DataTypes.TEXT, allowNull: false },
-  photo: { type: DataTypes.BLOB }, 
+  photo: { type: DataTypes.BLOB },
 });
 
 const Landmark = sequelize.define("landmark", {
