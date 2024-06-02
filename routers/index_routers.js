@@ -1,10 +1,8 @@
 const express = require("express");
 const router = express.Router();
-// const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
 const landmarks = require("../controllers/landmarks");
-const validation = require("../middleware/validate_form");
 
 router.get("/", (req, res) => {
   res.render("home", {

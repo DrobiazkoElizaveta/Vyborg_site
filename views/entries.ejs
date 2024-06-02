@@ -1,56 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %> </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
     <link rel="stylesheet" href="/css/bootstrap.css" />
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/entries.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/entries.css" />
+  </head>
+  <body>
     <header><%- include ('./partials/header') %></header>
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-12 col-md-8 mx-auto">
-          <h1 class="fw-light">Будьте в курсе последних событий: новости города Выборга в одном месте!</h1>
-          <p class="lead text-body-secondary">Хотите быть в курсе всех новостей и событий, происходящих в удивительном городе Выборг? Тогда страница с новостями и актуальной информацией – именно то, что вам нужно. Постоянно обновляется новостная лента, где вы найдете самые свежие и интересные события из жизни Выборга. </p>
+          <h1 class="fw-light">
+            Будьте в курсе последних событий: новости города Выборга в одном
+            месте!
+          </h1>
+          <p class="lead text-body-secondary">
+            Хотите быть в курсе всех новостей и событий, происходящих в
+            удивительном городе Выборг? Тогда страница с новостями и актуальной
+            информацией – именно то, что вам нужно. Постоянно обновляется
+            новостная лента, где вы найдете самые свежие и интересные события из
+            жизни Выборга.
+          </p>
           <% if (locals.user) { %>
-            <a type="button" href="/post_entry" class="btn btn-primary" style="border: 2px #355E3B solid; color: #ffffff; background-color: #355E3B;">
-              Добавить новость
-            </a>
-        <% } %>
+          <a
+            type="button"
+            href="/post_entry"
+            class="btn btn-primary"
+            style="
+              border: 2px #355e3b solid;
+              color: #ffffff;
+              background-color: #355e3b;
+            "
+          >
+            Добавить новость
+          </a>
+          <% } %>
         </div>
       </div>
     </section>
 
     <div class="container">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <% entries.forEach((entry)=>{ %>
-        <div class="card mb-3" style="max-width: 540px;">
+        <% entries.forEach((entry)=>{ %>
+        <div class="card mb-3" style="max-width: 540px">
           <div class="row g-0">
             <div class="col-md-4">
-              <img src="<%= entry.photo %>" class="img-fluid rounded-start" style="width: 100%; height: 225px; object-fit: cover;" alt="...">
+              <img
+                src="<%= entry.photo %>"
+                class="img-fluid rounded-start"
+                style="width: 100%; height: 225px; object-fit: cover"
+                alt="..."
+              />
             </div>
             <div class="col-md-8">
               <div class="card-body">
                 <h5 class="card-title"><%= entry.title %></h5>
-                <!-- <p class="card-text"><small class="text-muted">Последнее обновление 3 мин. назад</small></p> -->
               </div>
             </div>
           </div>
         </div>
-        <% }) %> 
-  </div>
-</div>
-    <hr class="featurette-divider">
+        <% }) %>
+      </div>
+    </div>
+    <hr class="featurette-divider" />
     <footer class="container"><%- include(`./partials/footer`) %></footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

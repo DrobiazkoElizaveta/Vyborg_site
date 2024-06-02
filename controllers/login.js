@@ -19,7 +19,7 @@ exports.submit = async (req, res, next) => {
       console.log("hjsdfkkdfsjdfksj");
       res.redirect("/");
     } else {
-      console.log("не верный пароль");
+      console.log("неверный пароль");
       return res.redirect("back");
     }
   } catch (error) {

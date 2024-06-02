@@ -5,110 +5,236 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Serif&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
     <!-- <link rel="stylesheet" href="/css/bootstrap.css" /> -->
     <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="./css/index.scss" />
+    <link rel="stylesheet" href="./css/carousel.css" />
   </head>
   <body>
     <header><%- include(`./partials/header`) %></header>
     <main>
-      <div style="background: url(https://lifehacker.ru/wp-content/uploads/2023/05/1828700489_1685017656.jpg); background-size: cover;" class="page-holder">
+      <div class="centered-photos">
+        <img src="./img/img1.png" alt="Фото 1" />
+        <img src="./img/img3.png" class="photo3" alt="Фото 3" />
+        <img src="./img/img2.png" alt="Фото 2" />
+      </div>
 
-        <div class="container py-5">
-          <header class="text-center text-white py-5">
-            <h1 class="display-4 font-weight-bold mb-4" style="background-color: rgba(0, 0, 0, 0.171); border-radius: 20px;">Интерактивный сайт с достопримечательностями г. Выборг</h1>
-            <p class="lead mb-0" style="background-color: rgba(0, 0, 0, 0.507); border-radius: 30px;">Добро пожаловать на сайт, посвященный городу Выборгу — удивительному месту с богатой историей и множеством достопримечательностей.</p>
-          </header>    
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-12 col-md-8 mx-auto">
+            <p class="lead text-body-secondary">
+              Выборг - древний город на северо-западе России, уникальное
+              культурное и историческое наследие которого привлекает туристов со
+              всего мира. Город был основан в XIII веке шведскими колонистами и
+              веками принадлежал Швеции, приобретал стратегическое значение в
+              деле контроля за северными территориями. В 1721 году Выборг вошел
+              в состав Российской империи после Псковского и Нисхнечудского
+              величия. В XIX веке город стал крупным торговым и промышленным
+              центром с развитой морской торговлей. Сегодня Выборг известен
+              своими архитектурными памятниками, среди которых замок Выборг,
+              Выборгский собор и дом вдовы, а также своим уникальным колоритом,
+              объединяющим западноевропейское и русское культурное наследие.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="centered-photos" id="text1">
+        <h1>Почему стоит посетить г. Выборг?</h1>
+      </div>
+
+      <div class="container" style="margin-top: 50px">
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              Уникальная архитектура и история
+            </h2>
+            <p class="lead">
+              <span class="text-body-secondary">
+                Выборг - это город с богатым культурным наследием, где
+                сочетаются архитектурные стили разных эпох. Он известен своими
+                средневековыми крепостями, церквями и зданиями в стиле
+                модерн.</span
+              >
+            </p>
+          </div>
+          <div class="col-md-5">
+            <img src="./img/img6.png" alt="" width="500px" />
+          </div>
+        </div>
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Природные красоты</h2>
+            <p class="lead">
+              <span class="text-body-secondary">
+                Посетив Выборг, вы сможете насладиться живописными видами
+                Финского залива и зеленых парков. Город окружен прекрасными
+                лесами и озерами, что делает его идеальным местом для отдыха на
+                природе.</span
+              >
+            </p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img src="./img/img7.jpg" alt="" width="500px" />
+          </div>
+        </div>
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">
+              Богатое культурное наследие
+            </h2>
+            <p class="lead">
+              <span class="text-body-secondary">
+                В Выборге проводятся многочисленные культурные события,
+                фестивали и выставки. Город прославился своими театральными
+                постановками, музеями и музыкальными концертами, предлагая
+                посетителям разнообразные культурные возможности.</span
+              >
+            </p>
+          </div>
+          <div class="col-md-5">
+            <img src="./img/img8.jpg" alt="" width="500px" />
+          </div>
         </div>
       </div>
 
-      <hr class="featurette-divider">
-      <h1 style=" text-align: center;">Почему нужно посетить г. Выборг?</h1>
-      <div class="container marketing">
-        <div class="row">
-          <div class="col-lg-4">
-            <img src="./img/img6.jpg" style="width: 140px; height: 140px; border-radius: 50%;" alt="">
-            <h2 class="fw-normal">История Выборга</h2>
-            <p>Выборг — древний город с богатой историей, уходящей корнями в средние века. Здесь сохранились множество исторических памятников, свидетельствующих о богатом прошлом этого удивительного места.</p>
-            
+      <div class="centered-photos" id="text2">
+        <h1>Достопримечательности г. Выборг</h1>
+      </div>
+
+      <div class="slider" x-data="{start: true, end: false}">
+        <div
+          class="slider__content"
+          x-ref="slider"
+          x-on:scroll.debounce="$refs.slider.scrollLeft == 0 ? start = true : start = false; Math.abs(($refs.slider.scrollWidth - $refs.slider.offsetWidth) - $refs.slider.scrollLeft) < 5 ? end = true : end = false;"
+        >
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://charmtravel.ru/wp-content/uploads/2018/03/img_7169_1024.jpg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Часовая башня</h2>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <img src="./img/img5.jpg" style="width: 140px; height: 140px; border-radius: 50%;" alt="">
-            <h2 class="fw-normal">Архитектурные Шедевры</h2>
-            <p>Архитектура Выборга впечатляет своим разнообразием стилей — от средневековых крепостей до модернистских зданий. Гуляя по улицам города, можно насладиться уникальным сочетанием истории и современности.</p>
-            
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://aalto.vbgcity.ru/sites/default/files/aa1_591b0f9ea1d0c_thumb_24591b0f9eabe5b.jpg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Бибилиотека Алвара Аалто</h2>
+            </div>
           </div>
-          <div class="col-lg-4">
-            <img src="./img/img4.jpg" style="width: 140px; height: 140px; border-radius: 50%;" alt="">
-            <h2 class="fw-normal">Природные Красоты</h2>
-            <p>Выборг не только богат историей, но и окружен потрясающей природой. Здесь можно насладиться живописными видами Выборгского залива, уютными парками и лесными массивами, создающими уникальную атмосферу спокойствия и красоты.</p>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://img.tourister.ru/files/2/8/2/0/6/9/2/5/original.jpg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Круглая башня</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://charmtravel.ru/wp-content/uploads/2019/01/dsc_8106-683x1024.jpg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Площадь Старой Ратуши</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://ic.pics.livejournal.com/nau_spb/16886362/1533410/1533410_original.jpg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Памятник трамваю</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://avatars.mds.yandex.net/get-altay/2805836/2a00000174ff2d9b9446fedb0bd0ee10141e/orig"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Памятник Апраксину Ф.М.</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://visitvbg.ru/sites/default/files/project/thumbnail/gallery_promo230454381_large.jpeg"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Башня Ратуши</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://upload.wikimedia.org/wikipedia/commons/8/88/%D0%92%D1%8B%D0%B1%D0%BE%D1%80%D0%B3._%D0%94%D0%BE%D0%BC_%D0%94%D0%B0%D0%B3%D0%B5%D1%80%D0%BC%D0%B0%D0%BD%D0%B0..JPG"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Дом консула Роте (дом Дагермана)</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://topphotospots.com/upload/styles/1920/public/loc269/img_6081.jpg?itok=d4t0rCoK"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Скульптура лося</h2>
+            </div>
+          </div>
+          <div class="slider__item">
+            <img
+              class="slider__image"
+              src="https://avatars.mds.yandex.net/get-altay/10647561/2a0000018c408295fef757e2a48d2608b895/L_height"
+              alt="Image"
+            />
+            <div class="slider__info">
+              <h2>Сад скульптур</h2>
+            </div>
           </div>
         </div>
       </div>
 
-      <hr class="featurette-divider">
-      <h1 style=" text-align: center;">Достопримечательности г. Выборг</h1>
-      
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" aria-label="Slide 5"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="./img/img7.jpeg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h3 style="background-color: rgba(0, 0, 0, 0.171); border-radius: 30px;">Башня Ратуши</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./img/img8.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h3 style="background-color: rgba(0, 0, 0, 0.171); border-radius: 30px;">Библиотека Алвара Аалто</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./img/img9.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h3 style="background-color: rgba(0, 0, 0, 0.171); border-radius: 30px;">Часовая Башня</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./img/img10.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h3 style="background-color: rgba(0, 0, 0, 0.171); border-radius: 30px;">Трамвай</h3>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="./img/img11.jpg" class="d-block w-100" alt="...">
-            <div class="carousel-caption d-none d-md-block">
-              <h3 style="background-color: rgba(0, 0, 0, 0.171); border-radius: 30px;">Круглая башня</h3>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Предыдущий</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Следующий</span>
-        </button>
-      </div>
+      <h5 style="text-align: center">
+        Посмотреть больше достопримечательностей на странице
+        <a href="/map">Интерактивная карта</a>
+      </h5>
 
-      <h5 style=" text-align: center;">Подробнее на странице <a href="/map">"Интерактивная карта"</a></h5>
-
-      <hr class="featurette-divider">
+      <hr class="featurette-divider" />
       <footer class="container"><%- include(`./partials/footer`) %></footer>
     </main>
 
